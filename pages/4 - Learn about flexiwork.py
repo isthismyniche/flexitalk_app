@@ -18,8 +18,8 @@ query = "Explain the main concept in these documents."
 context_docs = retrieve_documents(query, document_embeddings, documents)
 
 # Initialise chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = [] # Initialise messages in chat history
+if "messages_2" not in st.session_state:
+    st.session_state.messages_2 = [] # Initialise messages in chat history
 if "query_count" not in st.session_state:
     st.session_state.query_count = 0  # Initialise query counter
 if "context_docs" not in st.session_state:
@@ -32,7 +32,7 @@ def update_context_docs(query):
         st.session_state.context_docs = retrieve_documents(query, document_embeddings, documents)
 
 # Display chat messages from history on app rerun
-for message in st.session_state.messages:
+for message in st.session_state.messages_2:
         if message["role"] != "system":
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
@@ -41,7 +41,7 @@ for message in st.session_state.messages:
 if prompt := st.chat_input("What would you like to know?"):
     st.session_state.query_count += 1
     # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages_2.append({"role": "user", "content": prompt})
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -50,7 +50,7 @@ if prompt := st.chat_input("What would you like to know?"):
     update_context_docs(prompt)
     
     with st.chat_message("assistant"):
-        response = generate_rag_response(st.session_state.messages, context_docs)
+        response = generate_rag_response(st.session_state.messages_2, context_docs)
         st.write(response)
     
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages_2.append({"role": "assistant", "content": response})
