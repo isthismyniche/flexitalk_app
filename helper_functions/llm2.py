@@ -18,7 +18,7 @@ else:
 client = OpenAI(api_key = OPENAI_KEY)
 
 # Load and preprocess the documents
-def load_documents(file_paths, max_tokens=1000):
+def load_documents(file_paths, max_tokens=500):
     tokenizer = tiktoken.get_encoding("cl100k_base")
     documents = []
     
@@ -84,7 +84,32 @@ def generate_rag_response(messages, context_docs, model="gpt-4o-mini"):
     for i, doc in enumerate(context_docs, 1):
         messages.append({"role": "system", "content": f"Document {i}: {doc}"})
 
+    system_instructions = {"role" : "system", "content" : """
+                            Act as a top-tier management consultant with a specialisation in 
+                           flexible work arrangements. The content from the retrieved documents
+                           is valuable information that you should examine carefully before replying,
+                           but your reply need not be fully wedded to it.
+
+                           Think carefully about what the user is asking, before responding.
+
+                           Your response must be concise and insightful, and contain any relevant 
+                           information from the retrieved documents. If there is no relevant 
+                           information in the retrieved documents, then assess whether the user
+                           is asking for hard facts or an opinion. If hard facts (e.g. statistics),
+                           then explain that you do not have the information requested and guide the 
+                           user towards other means of obtaining the information. If an opinion,
+                           provide your best opinion.
+
+                           Your tone should be approachable and friendly, yet crisp in providing
+                           sharp responses that are backed by data and sources. Mention your sources
+                           where it helps to establish credibililty. If you are mentioning your source,
+                           state the title of the document drawing from the document name.
+                           """}
+
+    messages.insert(0, system_instructions)
+
     response = client.chat.completions.create(
+        temperature=0.4,
         model=model,
         messages=messages
     )
