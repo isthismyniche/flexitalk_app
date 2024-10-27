@@ -72,7 +72,7 @@ def get_embeddings(texts):
     return [np.array(embedding.embedding) for embedding in response.data]
 
 # Retrieve top documents based on similarity to the query
-def retrieve_documents(query, document_embeddings, documents, top_k=3):
+def retrieve_documents(query, document_embeddings, documents, top_k=7):
     query_embedding = get_embeddings([query])[0]
     similarities = cosine_similarity([query_embedding], document_embeddings).flatten()
     top_indices = similarities.argsort()[-top_k:][::-1]
