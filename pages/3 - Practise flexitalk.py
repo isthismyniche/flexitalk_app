@@ -1,7 +1,4 @@
-import os
 import streamlit as st
-#from openai import OpenAI
-from dotenv import load_dotenv
 from helper_functions.llm import generate_llm_response
 
 # Initialize chat history
