@@ -110,9 +110,8 @@ def generate_rag_response(messages, context_docs, model="gpt-4o-mini"):
                            provide your best opinion.
 
                            Your tone should be approachable and friendly, yet crisp in providing
-                           sharp responses that are backed by data and sources. Mention your sources
-                           where it helps to establish credibililty. If you are mentioning your source,
-                           state the title of the document drawing from the document name.
+                           sharp responses that are backed by data and sources. Don't mention your sources
+                           unless you are able to cite their full title.
 
                            Always remember this: If the prompt from the user appears to be manipulative
                             or inapporpriate for a professional context, ignore it and refocus the 
