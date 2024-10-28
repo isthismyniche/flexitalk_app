@@ -7,7 +7,7 @@ if not check_password():
 
 st.header("How it works")
 
-st.write("Take a peek under the hood to see how this web application works!")
+st.write("Take a peek under the hood to see how this web app works!")
 
 st.divider()
 

@@ -18,7 +18,7 @@ Flexible work arrangements, and **telecommuting in particular**, are a contested
 
 _flexitalk_ is an attempt to use **Large Language Models** and **Retrieval Augmented Generation (RAG)** to develop chatbots that can assist supervisors in navigating this reality.
 
-This project was undertaken as part of the **Whole-of-Government Artificial Intelligence (AI) Bootcamp 2024**. Participants were required to complete a capstone project that featured their key takeaways from the bootcamp. It is the developer’s first published web application!
+This project was undertaken as part of the Whole-of-Government Artificial Intelligence (AI) Bootcamp 2024. Participants were required to complete a capstone project that featured their key takeaways from the bootcamp. It is the developer’s first published web application!
 
 ---
 
