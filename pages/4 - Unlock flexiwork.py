@@ -7,7 +7,7 @@ from helper_functions.utility import check_password
 if not check_password():  
     st.stop()
 
-st.header("_Unlock flexiwork_")
+st.header("Unlock _flexiwork_")
 st.write("Wondering how you can unlock flexiwork at your workplace? Have a chat with our"
          " bot, which is conversant Singapore's tripartite guidelines on flexible work arrangements, "
          "and the latest research on global trends and research on flexiwork! We seek your "
