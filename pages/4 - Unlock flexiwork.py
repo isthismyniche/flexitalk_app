@@ -1,6 +1,17 @@
 import streamlit as st
 from helper_functions.llm2 import generate_rag_response, load_documents, get_embeddings, retrieve_documents
 import glob
+from helper_functions.utility import check_password  
+
+# Check if the password is correct.  
+if not check_password():  
+    st.stop()
+
+st.header("_Unlock flexiwork_")
+st.write("Wondering how you can unlock flexiwork at your workplace? Have a chat with our"
+         " bot, which is conversant Singapore's tripartite guidelines on flexible work arrangements, "
+         "and the latest research on global trends and research on flexiwork! We seek your "
+         "understanding that the bot may take a minute to come alive.")
 
 # Initialise the RAG
 # Load documents (adjust paths to your files)
@@ -13,10 +24,11 @@ if "messages_2" not in st.session_state:
 if "query_count" not in st.session_state:
     st.session_state.query_count = 0  # Initialise query counter
 if "context_docs" not in st.session_state:
+    st.session_state.context_docs = []  # To store retrieved documents
+if "documents" not in st.session_state:
     st.session_state.documents = load_documents(file_paths)
     # Generate embeddings for the documents
     st.session_state.document_embeddings = get_embeddings(st.session_state.documents)
-    st.session_state.context_docs = []  # To store retrieved documents
 
 # Function to retrieve documents based on the query
 def update_context_docs(query):
@@ -31,7 +43,7 @@ for message in st.session_state.messages_2:
                 st.markdown(message["content"])
 
 # React to user input
-if prompt := st.chat_input("Ask me anything about Flexible Work Arrangements"):
+if prompt := st.chat_input("Ask me about the types of flexible work arrangements you can implement."):
     # update the context documents if applicable
     update_context_docs(prompt)
 

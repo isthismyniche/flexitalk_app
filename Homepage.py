@@ -24,9 +24,10 @@ st.markdown(
         font-size: 24px;  
     }
     </style>
-    <p class="custom-text">Practise having difficult conversations with your
-    boss or report! And learn more about how flexible work arrangements could
-    work for you and your organisation.</p>
+    <p class="custom-text">A platform for supervisors to practise having 
+    difficult conversations with their staff about flexible work arrangements, and
+    to explore the types of flexible work arrangements that may be most suitable in their
+    business context.</p>
     """, unsafe_allow_html=True
 )
 
