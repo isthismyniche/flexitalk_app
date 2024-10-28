@@ -8,7 +8,7 @@ if not check_password():
 
 st.header("_Practise flexitalk_")
 st.write("Need to prepare for a difficult conversation with your staff about flexible work "
-             "arrangements? Put yourself in their shoes and have a chat with me! Our bot will respond"
+             "arrangements? Put yourself in their shoes and have a chat with our bot! Our bot will respond"
               " as the supervisor, which will help you think of ways in which you can manage the "
               "conversation and come to a fruitful landing.")
 
